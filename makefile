@@ -24,5 +24,5 @@ docs:
 	javadoc -sourcepath $(SRCDIR)*.java -d ./docs/    
 
 clean:
-	rm -rf  $(BINDIR)*.class 
+	rm -rf  $(SRCDIR)*.class 
 
