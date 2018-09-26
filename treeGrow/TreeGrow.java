@@ -40,7 +40,16 @@ public class TreeGrow {
 		JScrollPane scrollFrame = new JScrollPane(fp);
 		fp.setAutoscrolls(true);
 		scrollFrame.setPreferredSize(fsize);
-	    g.add(scrollFrame);
+		g.add(scrollFrame);
+		
+		JButton resetBtn = new JButton("Reset");
+		resetBtn.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e){
+				//TODO: parallel map to reset all tree extents
+				//TODO: reset year to 0
+			}
+		});
+		g.add(resetBtn);
     	
       	frame.setLocationRelativeTo(null);  // Center window on screen.
       	frame.add(g); //add contents to window

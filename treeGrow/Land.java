@@ -4,7 +4,6 @@ public class Land{
 
 	float[][] grid;
 	float[][] original_grid;
-	float[][] shade;
 
 	// to do
 	// sun exposure data here
@@ -12,8 +11,8 @@ public class Land{
 	static float shadefraction = 0.1f; // only this fraction of light is transmitted by a tree
 
 	Land(int dx, int dy) {
-		grid = new int[dx][dy];
-		shade = new int[dx][dy];
+		grid = new float[dx][dy];
+		original_grid = new float[dx][dy];
 	}
 
 	int getDimX() {
@@ -28,25 +27,25 @@ public class Land{
 	// Needs to be done after each growth pass of the simulator
 	void resetShade() {
 		//TODO: test that this works.
-		shade = new int[dx][dy];
+		grid = original_grid;
 	}
 
 	float getFull(int x, int y) {
-		return grid[x][y];
+		return original_grid[x][y];
 	}
 
 	void setFull(int x, int y, float val) {
 		// to do
-		grid[x][y] = val;
+		original_grid[x][y] = val;
 	}
 
 	float getShade(int x, int y) {
 		// to do
-		return shade[x][y];
+		return grid[x][y];
 	}
 
 	void setShade(int x, int y, float val){
-		shade[x][y] = val;
+		grid[x][y] = val;
 	}
 
 	// reduce the
