@@ -43,13 +43,36 @@ public class TreeGrow {
 		g.add(scrollFrame);
 		
 		JButton resetBtn = new JButton("Reset");
+		JButton pauseBtn = new JButton("Pause");
+		JButton playBtn = new JButton("Play");
+		JButton endBtn = new JButton("End");
+
+
 		resetBtn.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e){
 				//TODO: parallel map to reset all tree extents
 				//TODO: reset year to 0
 			}
 		});
+		pauseBtn.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e){
+				//TODO pause simulation
+			}
+		});
+		pauseBtn.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e){
+				//TODO resume simulation
+			}
+		});
+		endBtn.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e){
+				//TODO end program
+			}
+		});
 		g.add(resetBtn);
+		g.add(pauseBtn);
+		g.add(playBtn);
+		g.add(endBtn);
     	
       	frame.setLocationRelativeTo(null);  // Center window on screen.
       	frame.add(g); //add contents to window
