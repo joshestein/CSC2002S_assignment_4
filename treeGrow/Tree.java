@@ -45,5 +45,7 @@ public
 	// grow a tree according to its sun exposure
 	void sungrow(Land land) {
 		// to do
+		float newExtent = ext + sunexposure(land)/growfactor;
+		ext = newExtent;
 	}
 }

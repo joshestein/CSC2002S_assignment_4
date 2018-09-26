@@ -3,7 +3,7 @@ package treeGrow;
 public class Land{
 
 	float[][] grid;
-	int[][] original_grid;
+	float[][] original_grid;
 	float[][] shade;
 
 	// to do
