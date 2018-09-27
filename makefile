@@ -16,6 +16,9 @@ all: $(classes)
 $(BINDIR)%.class: $(SRCDIR)%.java
 	$(JC) $(JFLAGS) $<
 
+test:
+	$(JVM) -cp ./ treeGrow.TreeGrow ./test_input.txt
+
 run: 
 	$(JVM) -cp ./ treeGrow.TreeGrow ./sample_input.txt
 	#$(JVM) -cp ./treeGrow/ bin.treeGrow.TreeGrow sample_input.txt
