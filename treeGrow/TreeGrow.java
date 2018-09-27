@@ -52,7 +52,6 @@ public class TreeGrow {
 		resetBtn.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e){
 				ForkJoinPool.commonPool().invoke(new Reset(0, trees.length, trees));
-				//TODO: parallel map to reset all tree extents
 				//TODO: reset year to 0
 			}
 		});
@@ -104,6 +103,7 @@ public class TreeGrow {
 		setupGUI(frameX, frameY, sundata.trees);
 		
 		// create and start simulation loop here as separate thread
+		ForkJoinPool.commonPool().invoke(new SimulateLayer());
 
 	}
 }

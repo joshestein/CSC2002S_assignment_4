@@ -51,5 +51,9 @@ public class Land{
 	// reduce the
 	void shadow(Tree tree){
 		// to do
+		for (float i = (tree.getX() - tree.getExt()); startX < tree.getX() + tree.getExt(); i++){}
+			for (float j = (tree.getY() - tree.getExt()); startX < tree.getY() + tree.getExt(); j++){
+				setShade(i, j, getShade(i, j)/(float)10.0);
+		}
 	}
 }
