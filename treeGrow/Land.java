@@ -44,16 +44,17 @@ public class Land{
 		return grid[x][y];
 	}
 
-	void setShade(int x, int y, float val){
+	synchronized void setShade(int x, int y, float val){
 		grid[x][y] = val;
 	}
 
 	// reduce the
-	void shadow(Tree tree){
+	synchronized void shadow(Tree tree){
 		// to do
-		for (float i = (tree.getX() - tree.getExt()); startX < tree.getX() + tree.getExt(); i++){}
-			for (float j = (tree.getY() - tree.getExt()); startX < tree.getY() + tree.getExt(); j++){
+		for (int i = Math.round((tree.getX() - tree.getExt())); i < Math.round((tree.getX() + tree.getExt())); i++){
+			for (int j = Math.round((tree.getY() - tree.getExt())); j < Math.round((tree.getY() + tree.getExt())); j++){
 				setShade(i, j, getShade(i, j)/(float)10.0);
+			}
 		}
 	}
 }

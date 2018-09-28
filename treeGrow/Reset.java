@@ -14,7 +14,7 @@ class Reset extends RecursiveAction{
 
     public void compute(){
         if (end - start  <= SEQUENTIAL_THRESHOLD){
-            for (int i = 0; i < end; i++){
+            for (int i = start; i < end; i++){
                 trees[i].setExt((float)0.4);
             }
         } else {

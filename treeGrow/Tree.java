@@ -34,7 +34,13 @@ public
 	// return the average sunlight for the cells covered by the tree
 	float sunexposure(Land land){
 		// to do
-		return 0.0f; // not correct
+		float total = 0.0f;
+		for (int i = Math.round(xpos-ext); i < Math.round(xpos+ext); i++){
+			for (int j = Math.round(ypos-ext); j < Math.round(ypos+ext); j++){
+				total += land.getShade(i, j);
+			}
+		}
+		return total;
 	}
 
 	// is the tree extent within the provided range [minr, maxr)

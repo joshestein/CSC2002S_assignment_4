@@ -22,7 +22,7 @@ public class SunData{
 			sunmap = new Land(dimx,dimy);
 			for(int x = 0; x < dimx; x++)
 				for(int y = 0; y < dimy; y++) {
-					sunmap.setFull(x,y,sc.nextFloat());	
+					sunmap.setFull(x,y,Float.parseFloat(sc.next()));	
 				}
 			sunmap.resetShade();
 			
@@ -33,7 +33,7 @@ public class SunData{
 			{
 				int xloc = sc.nextInt();
 				int yloc = sc.nextInt();
-				float ext = (float) sc.nextInt();
+				float ext = Float.parseFloat(sc.next());
 				trees[t] = new Tree(xloc, yloc, ext);
 			}
 			sc.close(); 
