@@ -15,6 +15,8 @@ public class TreeGrow {
 	static int frameY;
 	static ForestPanel fp;
 
+	static int year;
+
 	// start timer
 	private static void tick(){
 		startTime = System.currentTimeMillis();
@@ -53,6 +55,7 @@ public class TreeGrow {
 		resetBtn.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e){
 				ForkJoinPool.commonPool().invoke(new Reset(0, trees.length, trees));
+				year = 0;
 				//TODO: reset year to 0
 			}
 		});
@@ -104,7 +107,10 @@ public class TreeGrow {
 		setupGUI(frameX, frameY, sundata.trees);
 		
 		// create and start simulation loop here as separate thread
+		float time;
 		while (true) {
+			tick();
+			System.out.println("Year: "+year);
 			for (int i = 20; i > 0; i = i-2){
 				//TODO: implement splitting of trees into layers in parallel
 				//this is super inefficient
@@ -117,6 +123,9 @@ public class TreeGrow {
 				}
 				ForkJoinPool.commonPool().invoke(new SimulateLayer(0, temp_layer.size(), temp_layer, sundata.sunmap));
 			}
+			time = tock();
+			System.out.println(time);
+			year++;
 		}
 
 	}

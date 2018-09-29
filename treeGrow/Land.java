@@ -44,17 +44,51 @@ public class Land{
 		return grid[x][y];
 	}
 
-	synchronized void setShade(int x, int y, float val){
+	//synchronized
+	void setShade(int x, int y, float val){
 		grid[x][y] = val;
 	}
 
 	// reduce the
-	synchronized void shadow(Tree tree){
+	//synchronized
+	void shadow(Tree tree){
 		// to do
-		for (int i = Math.round((tree.getX() - tree.getExt())); i < Math.round((tree.getX() + tree.getExt())); i++){
-			for (int j = Math.round((tree.getY() - tree.getExt())); j < Math.round((tree.getY() + tree.getExt())); j++){
+		for (int i = getXLowerLimit(tree); i < getXLowerLimit(tree); i++){
+			for (int j = getYLowerLimit(tree); j < getYUpperLimit(tree); j++){
 				setShade(i, j, getShade(i, j)/(float)10.0);
 			}
 		}
+	}
+
+	int getXLowerLimit(Tree tree) {
+        if (Math.round(tree.getX() - tree.getExt()) < 0) {
+			return 0;
+        } else {
+            return Math.round(tree.getX() - tree.getExt());
+        }
+	}
+
+	int getXUpperLimit(Tree tree) {
+        if (Math.round(tree.getX() + tree.getExt()) > getDimX()) {
+            return getDimX();
+        } else {
+            return Math.round(tree.getX() + tree.getExt());
+        }
+	}
+
+	int getYLowerLimit(Tree tree) {
+        if (Math.round(tree.getY() - tree.getExt()) < 0) {
+			return 0;
+        } else {
+            return Math.round(tree.getY() - tree.getExt());
+        }
+	}
+
+	int getYUpperLimit(Tree tree) {
+        if (Math.round(tree.getY() + tree.getExt()) > getDimY()) {
+            return getDimY();
+        } else {
+            return Math.round(tree.getY() + tree.getExt());
+        }
 	}
 }

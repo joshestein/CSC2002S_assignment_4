@@ -35,8 +35,8 @@ public
 	float sunexposure(Land land){
 		// to do
 		float total = 0.0f;
-		for (int i = Math.round(xpos-ext); i < Math.round(xpos+ext); i++){
-			for (int j = Math.round(ypos-ext); j < Math.round(ypos+ext); j++){
+		for (int i = land.getXLowerLimit(this); i < land.getXUpperLimit(this); i++){
+			for (int j = land.getYLowerLimit(this); j < land.getYUpperLimit(this); j++){
 				total += land.getShade(i, j);
 			}
 		}
