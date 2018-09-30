@@ -40,7 +40,8 @@ public
 				total += land.getShade(i, j);
 			}
 		}
-		return total;
+		int num_squares = (land.getXUpperLimit(this)-land.getXLowerLimit(this))*(land.getYUpperLimit(this)-land.getYLowerLimit(this));
+		return total/(num_squares);
 	}
 
 	// is the tree extent within the provided range [minr, maxr)
@@ -50,7 +51,6 @@ public
 
 	// grow a tree according to its sun exposure
 	void sungrow(Land land) {
-		// to do
 		float newExtent = ext + sunexposure(land)/growfactor;
 		ext = newExtent;
 	}
