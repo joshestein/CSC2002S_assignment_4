@@ -3,7 +3,7 @@ package treeGrow;
 import java.util.concurrent.RecursiveAction;
 
 class Reset extends RecursiveAction{
-    static int SEQUENTIAL_THRESHOLD = 1000;
+    static int SEQUENTIAL_THRESHOLD = 10000;
     int start;
     int end;
     Tree[] trees;
