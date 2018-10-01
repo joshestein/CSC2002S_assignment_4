@@ -32,15 +32,20 @@ public
 	}
 
 	// return the average sunlight for the cells covered by the tree
-	float sunexposure(Land land){
+	synchronized float sunexposure(Land land){
 		// to do
 		float total = 0.0f;
 		for (int i = land.getXLowerLimit(this); i < land.getXUpperLimit(this); i++){
 			for (int j = land.getYLowerLimit(this); j < land.getYUpperLimit(this); j++){
-				total += land.getShade(i, j);
+				float current_sun_value = land.getShade(i, j);
+				total += current_sun_value;
+				//for some reason, this is the only way to prevent interleavings
+				land.setShade(i, j, current_sun_value*0.1f);
 			}
 		}
 		int num_squares = (land.getXUpperLimit(this)-land.getXLowerLimit(this))*(land.getYUpperLimit(this)-land.getYLowerLimit(this));
+		//Uncomment to test for interleavings
+		//System.out.println("Total sunlight: "+total);
 		return total/(num_squares);
 	}
 
@@ -50,8 +55,10 @@ public
 	}
 
 	// grow a tree according to its sun exposure
-	void sungrow(Land land) {
+	synchronized void sungrow(Land land) {
 		float newExtent = ext + sunexposure(land)/growfactor;
 		ext = newExtent;
+		//Once again, moving this call to sunexposure because of interleavings
+		//land.shadow(this);
 	}
 }
