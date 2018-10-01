@@ -16,6 +16,15 @@ all: $(classes)
 $(BINDIR)%.class: $(SRCDIR)%.java
 	$(JC) $(JFLAGS) $<
 
+size:
+	$(JVM) -cp ./ treeGrow.TreeGrow ./size.txt
+	
+overlap:
+	$(JVM) -cp ./ treeGrow.TreeGrow ./overlap.txt
+
+no_overlap:
+	$(JVM) -cp ./ treeGrow.TreeGrow ./no_overlap.txt
+
 test:
 	$(JVM) -cp ./ treeGrow.TreeGrow ./test_input.txt
 
