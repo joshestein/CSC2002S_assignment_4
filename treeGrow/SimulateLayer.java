@@ -21,10 +21,11 @@ class SimulateLayer extends RecursiveAction{
 
     public void compute(){
         double total = 0.0;
-        if (end - start <= SEQUENTIAL_CUTOFF){
-            for (int i = start; i < end; ++i){
-                land.shadow(trees.get(i));
+        if (end - start <= SEQUENTIAL_CUTOFF) {
+            for (int i = start; i < end; i++) {
                 trees.get(i).sungrow(land);
+                //calling this method within sungrow to eliminate interleavings (despite synchronization?!)
+                //land.shadow(trees.get(i));
             }
         } else {
             SimulateLayer left = new SimulateLayer(start, (start+end)/2, trees, land);
