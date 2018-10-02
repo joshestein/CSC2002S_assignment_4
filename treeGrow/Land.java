@@ -25,8 +25,7 @@ public class Land{
 		return original_grid[1].length;
 	}
 
-	// Reset the shaded landscape to the same as the initial sun exposed landscape
-	// Needs to be done after each growth pass of the simulator
+	// doesn't need to be synchronized as it doesn't matter if there are race conditions
 	void resetShade() {
 		//TODO: test that this works.
 		for (int i = 0; i < Math.round(original_grid[0].length); i++){
