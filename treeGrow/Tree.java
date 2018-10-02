@@ -40,6 +40,7 @@ public
 				float current_sun_value = land.getShade(i, j);
 				total += current_sun_value;
 				//for some reason, this is the only way to prevent interleavings
+				//calling this method here means that I don't have to call land.shadow()
 				land.setShade(i, j, current_sun_value*0.1f);
 			}
 		}

@@ -45,6 +45,9 @@ public class Land{
 		grid[x][y] = val;
 	}
 
+	/**
+	 * Prints grid with updated (shaded) sunlight values
+	 */
 	void printGrid(){
 		for (int i = 0; i < Math.round(grid[0].length); i++){
 			for (int j = 0; j < Math.round(grid[1].length); j++){
@@ -54,6 +57,9 @@ public class Land{
 		}
 	}
 
+	/**
+	 * Prints the original (unshaded) grid
+	 */
 	void printOriginalGrid(){
 		for (int i = 0; i < Math.round(original_grid[0].length); i++){
 			for (int j = 0; j < Math.round(original_grid[1].length); j++){
@@ -72,7 +78,9 @@ public class Land{
 		grid[x][y] = val;
 	}
 
-	// reduce the
+	/**
+	 * Shadows particular section of land. Note that this is never actually called.
+	 */
 	synchronized void shadow(Tree tree){
 		for (int i = getXLowerLimit(tree); i < getXUpperLimit(tree); i++){
 			for (int j = getYLowerLimit(tree); j < getYUpperLimit(tree); j++){
@@ -81,6 +89,10 @@ public class Land{
 		}
 	}
 
+	/**
+	 * Returns the smallest X value. 
+	 * Returns 0 if tree extends beyond land.
+	 */
 	int getXLowerLimit(Tree tree) {
         if (Math.round(tree.getX() - tree.getExt()) < 0) {
 			return 0;
@@ -89,6 +101,10 @@ public class Land{
         }
 	}
 
+	/**
+	 * Returns the largest X value. 
+	 * Returns the x-dimension if tree extends beyond land.
+	 */
 	int getXUpperLimit(Tree tree) {
         if (Math.round(tree.getX() + tree.getExt())+1 > getDimX()) {
             return getDimX();
@@ -97,6 +113,10 @@ public class Land{
         }
 	}
 
+	/**
+	 * Returns the smallest Y value. 
+	 * Returns 0 if tree extends beyond land.
+	 */
 	int getYLowerLimit(Tree tree) {
         if (Math.round(tree.getY() - tree.getExt()) < 0) {
 			return 0;
@@ -105,6 +125,10 @@ public class Land{
         }
 	}
 
+	/**
+	 * Returns the largest Y value. 
+	 * Returns the y-dimension if tree extends beyond land.
+	 */
 	int getYUpperLimit(Tree tree) {
         if (Math.round(tree.getY() + tree.getExt())+1 > getDimY()) {
             return getDimY();
