@@ -42,7 +42,6 @@ public class ForestPanel extends JPanel implements Runnable {
 	}
 
 	public void run() {
-
 		// reordering so that trees are rendered in a more random fashion
 		rndorder = new ArrayList<Integer>();
 		for(int l = 0; l < forest.length; l++)

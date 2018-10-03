@@ -35,16 +35,17 @@ public
 	synchronized float sunexposure(Land land){
 		// to do
 		float total = 0.0f;
+		int num_squares = 0;
 		for (int i = land.getXLowerLimit(this); i < land.getXUpperLimit(this); i++){
 			for (int j = land.getYLowerLimit(this); j < land.getYUpperLimit(this); j++){
 				float current_sun_value = land.getShade(i, j);
 				total += current_sun_value;
+				num_squares++;
 				//for some reason, this is the only way to prevent interleavings
 				//calling this method here means that I don't have to call land.shadow()
 				land.setShade(i, j, current_sun_value*0.1f);
 			}
 		}
-		int num_squares = (land.getXUpperLimit(this)-land.getXLowerLimit(this))*(land.getYUpperLimit(this)-land.getYLowerLimit(this));
 		//Uncomment to test for interleavings
 		//System.out.println("Total sunlight: "+total);
 		return total/(num_squares);
